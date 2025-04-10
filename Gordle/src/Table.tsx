@@ -6,7 +6,7 @@ import React, { ChangeEvent, useEffect, useState } from "react";
 
 interface Props {
     manager : WordManager,
-    rerouteFunction: Function
+    rerouteFunction(): WordManager
 }
 
 export type Status = "grey" | "green" | "yellow";
@@ -21,7 +21,7 @@ export interface GridNode {
 
 
 
-export default function manager({ manager, rerouteFunction }: Props)
+export default function Table({ manager, rerouteFunction }: Props)
 {
 
     const [ useManager, setManager ] = useState(manager)

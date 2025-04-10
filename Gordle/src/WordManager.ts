@@ -18,7 +18,7 @@ class WordManager{
         this.currRow = currRow;
     }
 
-    generateBlank: Function = () => {
+    generateBlank = () => {
         for(let i = 0; i < gridLength; i++){
             this.GRID[i] = [];
             for(let j = 0; j<gridLength; j++)
