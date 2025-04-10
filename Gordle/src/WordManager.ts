@@ -1,10 +1,14 @@
 import { GridNode } from "./Table";
-import { generate, count } from "random-words";
+import fs from "fs";
+import wordlist from "word-list"
+
+
+const englishWords: string[] = wordlist.split('\n');
 
 const gridLength: number = 5;
 
 function generateRandomWord(): string {
-    return generate({minLength:gridLength, maxLength:gridLength}) as string;
+   return "";
 }
 
 
@@ -33,8 +37,8 @@ class WordManager{
     }
 
     validateBoard(word: string): void  {
-        if(this.currRow >= gridLength) return;
-        this.GRID[this.currRow++] = this.checkWord(word.toUpperCase());
+        if(this.currRow < gridLength) this.GRID[this.currRow++] = this.checkWord(word.toUpperCase());
+        if(this.currRow>=gridLength) this.COMPLETED = true;
     }
 
     checkWord(word: string): Array<GridNode> {

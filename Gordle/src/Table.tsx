@@ -31,6 +31,7 @@ export default function manager({ manager, rerouteFunction }: Props)
     }, [manager]);
 
     function onChange(event: ChangeEvent<HTMLInputElement>){
+        if(manager.COMPLETED) return;
         const newInput = event.target.value.toUpperCase();
         if(useInput.length < useManager.GRID[0].length && (/^[a-zA-Z]*$/).test(newInput) || newInput.length < useInput.length) setInput(newInput);
     }
@@ -43,6 +44,7 @@ export default function manager({ manager, rerouteFunction }: Props)
         // console.log(useManager);
 
         setInput("");
+        if(manager.COMPLETED) return;
         console.log(useManager);
         useManager.validateBoard(value);
         setManager(rerouteFunction());
