@@ -2,7 +2,7 @@
   "name": "gordle",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://JaidenKhosla.github.io/Gordle",
+  "homepage": "https://JaidenKhosla.github.io/Gordle/",
   "type": "module",
   "scripts": {
     "dev": "vite",
