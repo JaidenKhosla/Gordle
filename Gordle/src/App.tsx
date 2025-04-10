@@ -3,7 +3,7 @@ import "./stylesheets/App.css"
 import Table from './Table';
 import { WordManager } from './WordManager';
 import SuccessReveal from './SuccessReveal';
-import Image from "../public/wordleLogo.svg";
+import Image from "./assets/wordleLogo.svg";
 
 
 function App() {
