@@ -1,17 +1,7 @@
 import { GridNode } from "./Table";
-import fs from "fs";
-import wordlist from "word-list"
-
-
-const englishWords: string[] = wordlist.split('\n');
+import {generateRandomWord} from "./wordList";
 
 const gridLength: number = 5;
-
-function generateRandomWord(): string {
-   return "";
-}
-
-
 
 class WordManager{
     WORD: string;
@@ -20,7 +10,7 @@ class WordManager{
     currRow: number = 0;
     // currCol: number = 0;
 
-    constructor(WORD: string="ADIEU", GRID: Array<Array<GridNode>>=[], COMPLETED: boolean=false, currRow: number=0){
+    constructor(WORD: string=generateRandomWord(), GRID: Array<Array<GridNode>>=[], COMPLETED: boolean=false, currRow: number=0){
         this.WORD = WORD.toUpperCase();
         this.GRID = GRID;
         if(this.GRID.length==0) this.generateBlank();
@@ -71,4 +61,4 @@ class WordManager{
 
 }
 
-export {WordManager, generateRandomWord};
+export {WordManager};

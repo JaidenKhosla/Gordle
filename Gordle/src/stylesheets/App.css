@@ -12,3 +12,15 @@
   width: 100vw;
 
 }
+
+
+.header{
+  display: flex;
+  gap: 0.5em;
+  cursor: pointer;
+}
+
+.header > img {
+  height: 1.25em;
+  width: 1.25em;
+}

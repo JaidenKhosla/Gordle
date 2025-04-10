@@ -1,6 +1,7 @@
 
 import "./stylesheets/Table.css"
 import { WordManager } from "./WordManager";
+import { find } from "./wordList";
 import React, { ChangeEvent, useEffect, useState } from "react";
 
 interface Props {
@@ -39,7 +40,7 @@ export default function manager({ manager, rerouteFunction }: Props)
     
     function submit(){
         const value = useInput;
-        if(value.length != useManager.GRID[0].length) return;
+        if(value.length != useManager.GRID[0].length || !find(value)) return;
 
         // console.log(useManager);
 
@@ -49,6 +50,13 @@ export default function manager({ manager, rerouteFunction }: Props)
         useManager.validateBoard(value);
         setManager(rerouteFunction());
         console.log(useManager);
+    }
+
+    function keyDowwn(ev:React.KeyboardEvent<HTMLInputElement>): void{
+        if(["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight"].includes(ev.key))
+            ev.preventDefault();
+        else if(ev.key == "Enter")
+            submit();
     }
 
     addEventListener("click", ()=>{(document.querySelector(".wordInput") as HTMLInputElement).focus()})
@@ -64,7 +72,7 @@ export default function manager({ manager, rerouteFunction }: Props)
         </tbody>
     </table>
     <div className="inputDiv">
-        <input type="text" className="wordInput" value={useInput} onChange={onChange} autoFocus placeholder="Enter your word!" spellCheck={false}/>
+        <input type="text" className="wordInput" value={useInput} onChange={onChange} onKeyDown={keyDowwn} autoFocus placeholder="Enter your word!" spellCheck={false}/>
         <button className="submit" onClick={submit}>Submit</button>
     </div>
     </div>;
