@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import "./stylesheets/App.css"
 import Table from './Table';
 import { WordManager } from './WordManager';

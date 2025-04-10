@@ -14858,7 +14858,7 @@ zymic
 
 
 const findMap : {[word: string] : boolean} = {}
-words.reduce((prev: string, curr: string)=>{
+words.reduce((_: string, curr: string)=>{
     findMap[curr] = true;
     return "";
 })
