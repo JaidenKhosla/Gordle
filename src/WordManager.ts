@@ -43,13 +43,15 @@ class WordManager{
 
         const checkMap = new Map<string, number>();
 
+        for(let i = 0; i < this.WORD.length; i++)
+            checkMap.set(word.charAt(i), (checkMap.get(word.charAt(i)) ?? 0)+1);
+
         const arr : Array<GridNode> = [];
         let amtRight: number = 0;
 
     
         for(let i = 0; i < this.WORD.length; i++){
 
-            checkMap.set(word.charAt(i), (checkMap.get(word.charAt(i)) ?? 0)+1);
 
             const node : GridNode = {
                 text: word.charAt(i),

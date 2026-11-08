@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function SuccessReveal({ manager, foo }: Props){
     
     const [ useManager ] = useState(manager);
-    console.log(useManager, foo);
+    // console.log(useManager, foo);
     if(!foo) return;
     setTimeout(()=>{
     window.location.reload();
