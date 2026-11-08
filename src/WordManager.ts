@@ -8,6 +8,7 @@ class WordManager{
     GRID: Array<Array<GridNode>>;
     COMPLETED: boolean = false;
     currRow: number = 0;
+    freqCount: Map<string, number>
     // currCol: number = 0;
 
     constructor(WORD: string=generateRandomWord(), GRID: Array<Array<GridNode>>=[], COMPLETED: boolean=false, currRow: number=0){
@@ -16,6 +17,13 @@ class WordManager{
         if(this.GRID.length==0) this.generateBlank();
         this.COMPLETED = COMPLETED;
         this.currRow = currRow;
+
+        this.freqCount = new Map<string, number>();
+
+        for(const c of this.WORD.split(""))
+        {   
+            this.freqCount.set(c, (this.freqCount.get(c) ?? 0)+1);
+        }
     }
 
     generateBlank = () => {
@@ -33,10 +41,16 @@ class WordManager{
 
     checkWord(word: string): Array<GridNode> {
 
+        const checkMap = new Map<string, number>();
+
         const arr : Array<GridNode> = [];
         let amtRight: number = 0;
+
     
         for(let i = 0; i < this.WORD.length; i++){
+
+            checkMap.set(word.charAt(i), (checkMap.get(word.charAt(i)) ?? 0)+1);
+
             const node : GridNode = {
                 text: word.charAt(i),
                 status: "grey",
@@ -44,7 +58,7 @@ class WordManager{
             }
     
             if(word.charAt(i) == this.WORD.charAt(i)){ node.status = "green"; amtRight++;}
-            else if(this.WORD.indexOf(word.charAt(i)) != -1) node.status = "yellow";
+            else if(this.WORD.indexOf(word.charAt(i)) != -1 && (checkMap.get(word.charAt(i))||0) <= (this.freqCount.get(word.charAt(i))||0)) node.status = "yellow";
             
             arr.push(node);
         }
